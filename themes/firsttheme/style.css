@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/*
+ * Theme Name: firsttheme
+ * Theme URI: http://something-25.com
+ * Description: はじめてのテーマ
+ * Version: 0.1
+ * Author: oyakata-s
+ * Author URI: http://something-25.com
+ * Text Domain: firsttheme
+ *
+ * All files, unless otherwise stated, are released under the GNU General Public License
+ * version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+ */
+
+/*
+ * 共通設定
+ */
+body {
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 16px;
+	color: #333;
+	background-color: #fffafa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}

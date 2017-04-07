@@ -1,0 +1,179 @@
+# Loco Gettext template
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: firsttheme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: Sat Oct 08 2016 14:31:03 GMT+0900 (JST)\n"
+"POT-Revision-Date: Mon Feb 06 2017 20:40:46 GMT+0900 (JST)\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Satohru OYAKATA <satohru_f@yahoo.co.jp>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ../../themes/firsttheme\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: ja_JP\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: ../404.php:9 ../404.php:12
+msgid "Page Not Found."
+msgstr ""
+
+#: ../404.php:13
+msgid "I'll move to a top page 5 seconds later."
+msgstr ""
+
+#. Name of the template
+msgid "ブランクページテンプレート"
+msgstr ""
+
+#: ../comments.php:15
+#, php-format
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../comments.php:20
+#, php-format
+msgid "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr ""
+
+#: ../comments.php:52
+msgid "Comments are closed."
+msgstr ""
+
+#: ../comments.php:64
+msgctxt "noun"
+msgid "Comment"
+msgstr ""
+
+#: ../comments.php:67 ../comments.php:70
+msgid "Name"
+msgstr ""
+
+#: ../comments.php:73 ../comments.php:76
+msgid "Email"
+msgstr ""
+
+#: ../comments.php:79 ../comments.php:81
+msgid "Website"
+msgstr ""
+
+#: ../footer.php:10 ../header.php:61 ../sidebar.php:10
+msgid "If the widget is not set, this will be displayed."
+msgstr ""
+
+#: ../header.php:66
+msgid "Close"
+msgstr ""
+
+#: ../inc/classes.php:17
+msgid "Recent Posts"
+msgstr ""
+
+#: ../inc/classes.php:70
+msgid "Archives"
+msgstr ""
+
+#: ../inc/classes.php:92
+msgid "Select Year"
+msgstr ""
+
+#: ../inc/classes.php:95
+msgid "Select Month"
+msgstr ""
+
+#: ../inc/classes.php:98
+msgid "Select Day"
+msgstr ""
+
+#: ../inc/classes.php:101
+msgid "Select Week"
+msgstr ""
+
+#: ../inc/classes.php:104
+msgid "Select Post"
+msgstr ""
+
+#: ../inc/classes.php:168
+msgid "Unknown Feed"
+msgstr ""
+
+#: ../inc/classes.php:207
+#, php-format
+msgid "<strong>RSS Error</strong>: %s"
+msgstr ""
+
+#: ../inc/classes.php:222
+msgid ""
+"An error has occurred, which probably means the feed is down. Try again "
+"later."
+msgstr ""
+
+#: ../inc/classes.php:238
+msgid "Untitled"
+msgstr ""
+
+#: ../inc/filter.php:15 ../parts/loop-search.php:12 ../parts/loop.php:33
+msgid "Read more..."
+msgstr ""
+
+#. Name of the template
+msgid "1カラム（サイドバーなし）テンプレート"
+msgstr ""
+
+#: ../parts/loop-search.php:22 ../parts/loop.php:46
+msgid "Newer Entries"
+msgstr ""
+
+#: ../parts/loop-search.php:25 ../parts/loop.php:49
+msgid "Older Entries"
+msgstr ""
+
+#: ../parts/loop-search.php:38
+#, php-format
+msgid "Search Results for: &ldquo;%s&rdquo;"
+msgstr ""
+
+#: ../parts/loop-search.php:43
+msgid "Sorry, but nothing matched your search terms."
+msgstr ""
+
+#: ../searchform.php:3 ../searchform.php:4
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: ../searchform.php:4
+msgctxt "placeholder"
+msgid "Search..."
+msgstr ""
+
+#. Name of the theme
+msgid "firsttheme"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "http://something-25.com/theme"
+msgstr ""
+
+#. Description of the theme
+msgid "はじめてのテーマ"
+msgstr ""
+
+#. Author of the theme
+msgid "oyakata"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://something-25.com"
+msgstr ""

@@ -1,0 +1,197 @@
+@charset "UTF-8";
+/*
+ * コメント関連スタイルシート
+ */
+
+/*
+ * #comments
+ */
+#comments {
+	padding: 0 0 0 0;
+}
+
+#comments h2.comments-title {
+	margin: 0;
+	padding: 10px;
+}
+
+#comments .comment-list {
+	/*padding: 0 10px;*/
+	margin-bottom: 10px;
+}
+
+#comments .comment-list > .comment:nth-child(odd) {
+	/*padding: 10px 0;*/
+	/*background-color: rgba(255,255,255,0.5);*/
+}
+
+#comments .comment-list .comment .comment-body {
+	position: relative;
+	margin: 0 10px;
+	padding: 10px 0;
+	border-bottom: 1px solid #aaa;
+}
+#comments .comment-list .comment .comment-body:after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+/*#comments .comment-list .comment-body:last-child {
+	border-bottom: none;
+}*/
+
+#comments .comment-list .comment .children {
+	padding-left: 10px;
+}
+
+.comment-body .comment-author {
+	float: left;
+	width: 100px;
+	height: 100px;
+	margin: 20px 20px 20px 0;
+	color: #666;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+.comment-body .comment-author .avatar {
+	display: block;
+	margin: 10px auto;
+	border-radius: 24px;
+}
+
+.comment-body .comment-author .says {
+	display: none;
+}
+
+.comment-body .comment-meta {
+	text-align: right;
+}
+
+.comment-body .commentmetadata {
+	font-size: 0.8rem;
+	font-style: italic;
+}
+.comment-body .commentmetadata a {
+	color: #666;
+}
+
+.comment-body .reply {
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+}
+.comment-body .reply .comment-reply-link {
+	display: inline-block;
+	padding: 10px;
+	border: none;
+	background-color: #333;
+	box-shadow: 2px 2px 5px -2px #000;
+	color: #fff;
+	font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+.comment-body .reply .comment-reply-link:hover {
+	opacity: 0.8;
+	box-shadow: 0 0 5px #000;
+}
+
+.comment-body p {
+	margin-bottom: 40px;
+	color: #666;
+	text-indent: 0;
+}
+
+#comments .no-comments {
+	margin: 10px;
+	color: #999;
+	font-size: 0.8rem;
+}
+
+/*
+ * #commentform
+ */
+#commentform p {
+	margin: 10px 0;
+	text-indent: 0;
+}
+#commentform p.logged-in-as a {
+	text-decoration: underline;
+}
+#commentform p.form-submit {
+	margin: 15px 0;
+	text-decoration: underline;
+}
+
+#commentform label {
+	/*display: none;*/
+}
+
+#commentform textarea, input[type=text], input[type=email], input[type=url] {
+	display: inline-block;
+	width: 95%;
+	padding: 10px;
+	border: none;
+	border-radius: 10px;
+	background-color: rgba(255,255,255,0.8);
+	box-shadow: 0 0 10px -2px #000 inset;
+	color: #666;
+	font-size: 1.2em;
+	box-sizing: border-box;
+}
+@supports (-webkit-backdrop-filter:blur(5px)) {
+	#commentform textarea, input[type=text] {
+		background-color: rgba(255,255,255,0.5);
+
+		-webkit-backdrop-filter: blur(20px);
+	}
+}
+
+#commentform .required {
+	margin: 0 5px;
+	color: #f00;
+	font-size: 1.2em;
+}
+
+#commentform input[type=submit] {
+	cursor: pointer;
+}
+
+/*
+ * #respond
+ */
+#respond {
+	padding: 0 15px;
+}
+
+#reply-title {
+	margin: 0;
+	padding: 10px 0;
+	background-color: transparent;
+	/*font-size: 1.0em;*/
+	color: #333;
+}
+#reply-title:before {
+	margin-right: 5px;
+	font-family: "FontAwesome";
+	content: "\f040";
+}
+
+#reply-title a {
+	color: #333;
+}
+#reply-title a:hover {
+	color: #fff;
+}
+
+#cancel-comment-reply-link {
+	font-size: 0.8rem;
+}
+#cancel-comment-reply-link:before {
+	content: "[";
+}
+#cancel-comment-reply-link:after {
+	content: "]";
+}

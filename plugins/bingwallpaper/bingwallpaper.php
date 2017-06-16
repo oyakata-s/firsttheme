@@ -3,7 +3,7 @@
  * Plugin Name: Bing Wallpaper
  * Plugin URI: http://something-25.com
  * Description: Bingから壁紙を取得して背景に設定するプラグイン
- * Version: 0.1
+ * Version: 0.1.1
  * Author: oyakata-s
  * Author URI: http://something-25.com
  *
@@ -30,7 +30,9 @@ function bingwallpaper_init() {
 		create_bingwallpaper();
 
 		// style設定
-		add_action( 'wp_print_styles', 'add_bingwallpaper_style' );
+		// 出力位置を変更
+		// add_action( 'wp_print_styles', 'add_bingwallpaper_style' );
+		add_action( 'wp_head', 'add_bingwallpaper_style' );
 		add_action( 'wp_footer', 'add_bingwallpaper_footer_style' );
 	}
 }

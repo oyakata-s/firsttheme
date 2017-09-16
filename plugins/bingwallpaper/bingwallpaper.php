@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Bing Wallpaper
- * Plugin URI: http://something-25.com
+ * Plugin URI: https://github.com/oyakata-s/firsttheme
  * Description: Bingから壁紙を取得して背景に設定するプラグイン
  * Version: 0.1.1
  * Author: oyakata-s

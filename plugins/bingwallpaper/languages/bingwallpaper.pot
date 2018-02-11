@@ -1,10 +1,9 @@
-# Loco Gettext template
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Bing Wallpaper\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Tue Dec 27 2016 20:33:06 GMT+0900 (JST)\n"
+"POT-Creation-Date: 2017-12-22 11:07+0000\n"
 "POT-Revision-Date: Tue Dec 27 2016 20:33:13 GMT+0900 (JST)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
@@ -25,29 +24,30 @@ msgstr ""
 "X-Generator: Loco - https://localise.biz/"
 
 #. Name of the plugin
+#: Users/satohru/Dropbox/Dev/git/wordpress/wp-content/plugins/bingwallpaper/inc/admin.php:14
 msgid "Bing Wallpaper"
 msgstr ""
 
-#. URI of the plugin
-msgid "http://something-25.com/plugin"
-msgstr ""
-
-#. Description of the plugin
-msgid "Bingから壁紙を取得して背景に設定するプラグイン"
-msgstr ""
-
-#. Author of the plugin
-msgid "oyakata"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "http://something-25.com"
-msgstr ""
-
-#: ../bingwallpaper.php:112
+#: Users/satohru/Dropbox/Dev/git/wordpress/wp-content/plugins/bingwallpaper/inc/admin.php:16
 msgid "Setting Bing Wallpaper"
 msgstr ""
 
-#: ../bingwallpaper.php:122
+#: Users/satohru/Dropbox/Dev/git/wordpress/wp-content/plugins/bingwallpaper/inc/admin.php:27
 msgid "Activate Bing Wallpaper"
+msgstr ""
+
+#. Description of the plugin
+msgid "You can set wallpaper as background by Bing."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/oyakata-s/firsttheme"
+msgstr ""
+
+#. Author of the plugin
+msgid "oyakata-s"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://something-25.com"
 msgstr ""

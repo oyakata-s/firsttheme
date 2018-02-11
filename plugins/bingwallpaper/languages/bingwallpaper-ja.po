@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bing Wallpaper\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Tue Dec 27 2016 20:25:30 GMT+0900 (JST)\n"
-"PO-Revision-Date: Tue Dec 27 2016 20:30:44 GMT+0900 (JST)\n"
+"POT-Creation-Date: 2017-12-22 11:07+0000\n"
+"PO-Revision-Date: 2017-12-22 11:08+0000\n"
 "Last-Translator: satohru <satohru_f@yahoo.co.jp>\n"
-"Language-Team: \n"
-"Language: Japanese\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,29 +23,30 @@ msgstr ""
 "X-Generator: Loco - https://localise.biz/"
 
 #. Name of the plugin
+#: Users/satohru/Dropbox/Dev/git/wordpress/wp-content/plugins/bingwallpaper/inc/admin.php:14
 msgid "Bing Wallpaper"
 msgstr ""
 
-#. URI of the plugin
-msgid "http://something-25.com/plugin"
-msgstr ""
+#: Users/satohru/Dropbox/Dev/git/wordpress/wp-content/plugins/bingwallpaper/inc/admin.php:16
+msgid "Setting Bing Wallpaper"
+msgstr "BIng Wallpaper 設定"
+
+#: Users/satohru/Dropbox/Dev/git/wordpress/wp-content/plugins/bingwallpaper/inc/admin.php:27
+msgid "Activate Bing Wallpaper"
+msgstr "Bing Wallpaperを有効化する"
 
 #. Description of the plugin
-msgid "Bingから壁紙を取得して背景に設定するプラグイン"
+msgid "You can set wallpaper as background by Bing."
+msgstr "Bingから壁紙を取得し背景に設定します。"
+
+#. URI of the plugin
+msgid "https://github.com/oyakata-s/firsttheme"
 msgstr ""
 
 #. Author of the plugin
-msgid "oyakata"
+msgid "oyakata-s"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "http://something-25.com"
+msgid "https://something-25.com"
 msgstr ""
-
-#: ../bingwallpaper.php:123
-msgid "Activate Bing Wallpaper"
-msgstr "Bing Wallpaperを有効にする"
-
-#: ../bingwallpaper.php:112
-msgid "Setting Bing Wallpaper"
-msgstr "Bing Wallpaperの設定"

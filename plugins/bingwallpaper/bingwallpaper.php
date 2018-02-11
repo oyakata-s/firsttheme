@@ -2,174 +2,89 @@
 /*
  * Plugin Name: Bing Wallpaper
  * Plugin URI: https://github.com/oyakata-s/firsttheme
- * Description: Bingから壁紙を取得して背景に設定するプラグイン
- * Version: 0.1.1
+ * Description: You can set wallpaper as background by Bing.
+ * Version: 0.2
  * Author: oyakata-s
- * Author URI: http://something-25.com
- *
- * All files, unless otherwise stated, are released under the GNU General Public License
- * version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+ * Author URI: https://something-25.com
+ * License: GNU General Public License v2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: bingwallpaper
  */
 
 /*
- * 初期化処理
+ * 定数定義
  */
-function bingwallpaper_init() {
-	// ディレクトリチェック
-	check_wallpaper_dir();
+define( 'BINGWP_DIR_PATH', plugin_dir_path( __FILE__ ) );	// プラグインディレクトリへのパス
+define( 'BINGWP_DIR_URL', plugin_dir_url( __FILE__ ) );		// プラグインディレクトリへのURL
+define( 'BINGWP_TEXTDOMAIN', 'bingwallpaper' );				// テキストドメイン
 
-	// カスタマイズメニューに追加
-	add_action( 'customize_register', 'bingwallpaper_customize' );
-
-	// 多言語翻訳用
-	load_plugin_textdomain( 'bingwallpaper', false, 'bingwallpaper/languages' );
-
-	// 有効化されている場合
-	if (get_option('BingWallpaper_Enable')) {
-		// 壁紙を生成
-		create_bingwallpaper();
-
-		// style設定
-		// 出力位置を変更
-		// add_action( 'wp_print_styles', 'add_bingwallpaper_style' );
-		add_action( 'wp_head', 'add_bingwallpaper_style' );
-		add_action( 'wp_footer', 'add_bingwallpaper_footer_style' );
-	}
-}
-add_action( 'plugins_loaded', 'bingwallpaper_init' );
+define( 'BINGWP_CACHE_DIR_PATH', BINGWP_DIR_PATH . 'cache/' );	// キャッシュ用ディレクトリパス
+define( 'BINGWP_CACHE_DIR_URL', BINGWP_DIR_URL . 'cache/' );	// キャッシュ用ディレクトリURL
 
 /*
- * bingwallpaper生成
+ * ライブラリ読込
  */
-function create_bingwallpaper() {
-	$fileName = date_i18n('Ymd') . '.jpg';
-	$dir = plugin_dir_path( __FILE__ );
-	$tmpFileName = $dir . 'wallpaper/' . $fileName;
-	$defFileName = $dir . 'wallpaper/today.jpg';
-	$jsonFileName = $dir . 'wallpaper/result.json';
+require_once ABSPATH . 'wp-admin/includes/file.php';		// WP_Filesystem使用
+require_once BINGWP_DIR_PATH . 'inc/init.php';				// 初期化関連
+require_once BINGWP_DIR_PATH . 'inc/admin.php';				// 管理画面関連
+require_once BINGWP_DIR_PATH . 'inc/shortcodes.php';		// ショートコード関連
 
-	if ( !file_exists($tmpFileName) ) {
-		$locale = get_locale();
-		$data = file_get_contents('http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=' . $locale);
-		$json = json_decode($data);
-		$url = 'http://bing.com' . $json->images[0]->url;
 
-		$imgData = @file_get_contents( $url );
-		if ( $imgData ) {
-			@file_put_contents( $tmpFileName, $imgData );
-			copy($tmpFileName, $defFileName);
+require_once BINGWP_DIR_PATH . 'inc/utils/class-ft-base.php';		// 
+class BingWallpaper extends FtBase {
+
+	/* 
+	 * 初期化
+	 */
+	public function __construct() {
+
+		/* 
+		 * ベースクラスのコンストラクタ呼び出し
+		 */
+		try {
+			parent::__construct( __FILE__ );
+		} catch ( Exception $e ) {
+			throw $e;
 		}
 
-		@file_put_contents( $jsonFileName, $data );
+		// 多言語翻訳用
+		load_plugin_textdomain( 'bingwallpaper', false, 'bingwallpaper/languages' );
 
-		cleanup_wallpaper_dir($fileName);
+		/*
+		 * プラグイン有効化時
+		 */
+		register_activation_hook( __FILE__, 'bingwp_activation' );
+
+		/*
+		 * プラグイン無効化時
+		 */
+		register_deactivation_hook( __FILE__, 'bingwp_deactivation' );
+
+		/*
+		 * プラグインロード
+		 */
+		add_action( 'plugins_loaded', 'bingwp_loaded' );
+
+		/*
+		 * CSS&JS出力
+		 */
+		add_action( 'wp_head', 'bingwp_header_style' );
+		add_action( 'wp_footer', 'bingwp_footer_style' );
+
+		/*
+		 * 壁紙の反映
+		 */
+		add_filter( 'body_class', 'add_bingwp_class' );
+
+		/*
+		 * 設定メニュー追加
+		 */
+		add_action( 'customize_register', 'bingwp_customize_register' );
+
 	}
-}
-
-/*
- * 壁紙のコピーライトを取得する
- */
-function get_copyright() {
-	$data = @file_get_contents( plugin_dir_path( __FILE__ ) . '/wallpaper/result.json' );
-	$json = json_decode($data);
-	return $json->images[0]->copyright;
-}
-
-/*
- * 画像を保存するディレクトリの存在をチェックする
- * 存在しなかったら作成する
- */
-function check_wallpaper_dir() {
-	$directory_path = plugin_dir_path( __FILE__ ) . 'wallpaper';
-
-	if ( !file_exists($directory_path) ) {
-		if ( mkdir($directory_path, 0755) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-/*
- * 不要な壁紙を削除
- */
-function cleanup_wallpaper_dir($fileName) {
-	$dir = plugin_dir_path( __FILE__ ) . 'wallpaper/';
-
-	$list = scandir($dir);
-	foreach($list as $value){
-		if ($value === 'today.jpg') continue;
-		if ($value === 'result.json') continue;
-		if ($value === $fileName) continue;
-
-		$file = $dir . $value;
-		if(!is_file($file)) continue;
-
-		unlink($file);
-	}
-}
-
-/*
- * 管理画面カスタマイズ
- */
-function bingwallpaper_customize( $wp_customize ) {
-
-	// カスタマイズ画面にメニューを追加
-	$wp_customize->add_section( 'bingwallpaper_section', array(
-		'title' => 'Bing Wallpaper',
-		'propaty' => 1,
-		__('Setting Bing Wallpaper', 'bingwallpaper'),
-	));
-
-	// 有効化チェックボックス
-	$wp_customize->add_setting('BingWallpaper_Enable', array(
-		'type' => 'option',
-	));
-	$wp_customize->add_control('BingWallpaper_Enable', array(
-		'section' => 'bingwallpaper_section',
-		'settings' => 'BingWallpaper_Enable',
-		'label' => __('Activate Bing Wallpaper', 'bingwallpaper'),
-		'type' => 'checkbox',
-	));
 
 }
 
-/*
- * bodyにスタイル属性追加
- */
-function add_bingwallpaper_style() {
-?>
-<style type="text/css" id="bingwallpaper_style">
-body {
-	background-image: url(<?php echo plugin_dir_url( __FILE__ ); ?>wallpaper/today.jpg);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-}
-.bing-copyright {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	z-index: -1;
-	color: #fff;
-	font-size: 0.8em;
-	opacity: 0.3;
-}
-</style>
-<?php
-}
-
-/*
- * footerにコピーライトを追加する
- */
-function add_bingwallpaper_footer_style() {
-?>
-<div class="bing-copyright"><?php echo get_copyright(); ?></div>
-<?php
-}
+$bingwallpaper = new BingWallpaper();
 
 ?>
